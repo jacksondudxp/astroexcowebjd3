@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/xr12i05xn/astro%20logo.png?updatedAt=1751123974369" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astronomy Club Exco Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#F8FAFC',    // slate-50 (Unused)
+              'brand-secondary': '#F1F5F9',    // slate-100 (Unused)
+              'brand-accent': '#3B82F6',      // blue-500 (Primary Action)
+              'brand-accent-dark': '#2563EB', // blue-600 (Action Hover)
+              'brand-star': '#F59E0B',        // amber-500 (Highlight)
+              'brand-text': '#E2E8F0',        // slate-200 (Main Text for dark bg)
+              'brand-text-dark': '#94A3B8',   // slate-400 (Secondary Text for dark bg)
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              'slide-in-up': 'slideInUp 0.5s ease-in-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideInUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        /* Animated Starry Background for Login*/
+        body.login-bg {
+          overflow: hidden;
+          background-color: #0c1427; /* Dark blue fallback */
+        }
+
+        body.login-bg::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 100%;
+          background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
+          background-position: 0 0;
+          background-repeat: repeat-x;
+          background-size: 50% auto;
+          z-index: 0;
+          animation: move-background 240s linear infinite;
+        }
+
+        @keyframes move-background {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+        
+        /* New Animated Starry Background for App */
+        body.app-bg {
+          overflow: hidden;
+          background-color: #0c1427; /* Dark blue */
+        }
+
+        body.app-bg::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d42e2?q=80&w=2070&auto=format&fit=crop');
+          background-position: center;
+          background-size: cover;
+          z-index: -1;
+          transform-origin: center;
+          animation: rotate-sky 360s linear infinite;
+        }
+
+        @keyframes rotate-sky {
+          from {
+            transform: rotate(0deg) scale(1.1);
+          }
+          to {
+            transform: rotate(360deg) scale(1.1);
+          }
+        }
+        
+        /* Saturn secret button animation */
+        @keyframes move-saturn {
+          0%   { top: 15%; left: 95%; transform: scale(1) rotate(10deg); }
+          25%  { top: 40%; left: 15%; transform: scale(1.1) rotate(0deg); }
+          50%  { top: 85%; left: 5%;  transform: scale(1) rotate(-10deg); }
+          75%  { top: 60%; left: 80%; transform: scale(0.9) rotate(0deg); }
+          100% { top: 15%; left: 95%; transform: scale(1) rotate(10deg); }
+        }
+
+        .secret-saturn-button {
+          position: fixed;
+          z-index: 1;
+          font-size: 3rem; /* 48px */
+          text-decoration: none;
+          animation: move-saturn 75s ease-in-out infinite;
+          opacity: 0.8;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          text-shadow: 0 0 15px rgba(255, 239, 186, 0.4);
+        }
+
+        .secret-saturn-button:hover {
+          transform: scale(1.5) !important; /* Important to override animation */
+          animation-play-state: paused;
+          opacity: 1;
+          cursor: pointer;
+        }
+        
+        /* Floating Reactions Animation */
+        @keyframes float-up {
+          0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-200px) scale(1.5) rotate(20deg);
+          }
+        }
+        .floating-reaction {
+          position: absolute;
+          bottom: 80px; /* start above the reaction buttons */
+          left: 50%;
+          font-size: 3rem;
+          animation: float-up 4s ease-out forwards;
+          pointer-events: none;
+        }
+
+        /* Ensure content is above the background */
+        .content-on-top {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.7.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.3",
+    "xlsx": "https://esm.sh/xlsx@^0.18.5"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-brand-text">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

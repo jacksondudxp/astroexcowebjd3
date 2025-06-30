@@ -1,0 +1,6 @@
+{
+  "name": "AstroClub Admin Hub",
+  "description": "An administrative dashboard for the HKUST Astronomy Club committee. Manage members, events, announcements, and leverage an AI assistant for streamlined operations.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
